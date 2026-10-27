@@ -1,8 +1,8 @@
 import mlflow
 
 # On réutilise le module MLflow pour LIRE les résultats
-# search_runs renvoie tous les runs de l'expérience sous forme de tableau pandas.
-# order_by trie les lignes : "metrics.f1 DESC" = f1 décroissant (meilleur en premier)
+
+
 runs = mlflow.search_runs(
     experiment_names=["churn-prediction"],
     order_by=["metrics.f1 DESC"]
@@ -16,7 +16,7 @@ colonnes = [
     "metrics.accuracy", 
     "metrics.f1"
 ]
-print(runs[colonnes].to_string(index=False))  # index=False : sans numéros de ligne
+print(runs[colonnes].to_string(index=False))  
 
 # La première ligne du tableau trié est le meilleur run
 meilleur = runs.iloc[0]
